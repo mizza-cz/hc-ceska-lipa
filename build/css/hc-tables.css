@@ -1,0 +1,12 @@
+
+/* Section heading actions and youth demo rows */
+.section-heading{display:flex!important;justify-content:space-between!important;align-items:center!important;flex-wrap:wrap!important;gap:20px!important}
+.section-heading > div{min-width:0}
+.section-heading > .hc-pill{flex:0 0 auto;margin-left:auto}
+.hc-youth-table td{text-align:left!important;padding:14px 16px!important;color:#202027!important;border-bottom:1px solid #e9e9e9}
+.hc-youth-table tbody tr:nth-child(even){background:#fafafa}
+.hc-youth-table tbody tr.is-club{background:#fff0f2;color:#bc1024}
+.hc-youth-table tbody tr.is-club td{color:#bc1024}
+.hc-youth-table th{text-align:left;padding:14px 16px}
+.hc-youth-board__demo{padding-top:16px;margin:0;color:#858585;font-size:11px}
+@media(max-width:650px){.section-heading{align-items:center!important}.section-heading > .hc-pill{margin-left:0}}
