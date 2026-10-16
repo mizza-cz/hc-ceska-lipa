@@ -11,13 +11,14 @@
 
     <!--****** Favicon ******-->
     <!--****** Fonts ******-->
-    {% if title == "Soupiska A-týmu" or title == "Tabulka A-týmu" %}<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />{% endif %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
 
     <!--****** Styles  ******-->
     <link rel="preload" href="css/styles.css" as="style" />
     <link rel="stylesheet" media="screen, handheld" href="css/styles.css" />
     {% if title == "Tabulka A-týmu" %}<link rel="stylesheet" href="css/hc-roster.css" /><link rel="stylesheet" href="css/hc-standings.css" />{% endif %}
     {% if title == "Soupiska A-týmu" or title == "Tabulka A-týmu" %}<link rel="stylesheet" href="css/hc-roster.css" />{% endif %}
+    <link rel="stylesheet" href="css/hc-select.css" />
     <link rel="stylesheet" media="print" href="css/prints.css" />
     <!--****** Styles  ******-->
 
@@ -58,7 +59,8 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    {% if title == "Soupiska A-týmu" or title == "Tabulka A-týmu" %}<script defer src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>{% endif %}
+    <script defer src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script defer src="js/scripts.js"></script>
+    <script defer src="js/hc-select.js"></script>
   </body>
 </html>

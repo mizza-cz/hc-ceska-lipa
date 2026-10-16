@@ -109,39 +109,6 @@
 .roster-filters__field select:focus {
   border-color: #c91129;
 }
-.roster-filters .select2-container {
-  width: 100% !important;
-}
-.roster-filters .select2 {
-  margin-bottom: 0 !important;
-}
-.roster-filters .select2-container--default .select2-selection--single {
-  height: 49px;
-  border: 1px solid #d9d9de;
-  border-radius: 9px;
-  background: white;
-  display: flex;
-  align-items: center;
-  padding: 0 14px;
-}
-.roster-filters .select2-selection__rendered {
-  line-height: 46px !important;
-  padding-left: 0 !important;
-  color: #202025 !important;
-  font-size: 14px;
-}
-.roster-filters .select2-selection__arrow {
-  top: 10px !important;
-  right: 11px !important;
-}
-.roster-filters .select2-container--focus .select2-selection--single,
-.roster-filters .select2-container--open .select2-selection--single {
-  border-color: #c91129;
-}
-.select2-container--default
-  .select2-results__option--highlighted.select2-results__option--selectable {
-  background: #c91129;
-}
 .roster-page__demo {
   color: #898989;
   font-size: 11px;
@@ -318,88 +285,6 @@
 .roster-filters__field input {
   padding: 0 17px !important;
   line-height: normal;
-}
-.roster-filters .select2-container {
-  display: block !important;
-  height: 52px !important;
-  min-height: 52px;
-}
-.roster-filters .select2-container--default .select2-selection--single {
-  height: 52px !important;
-  min-height: 52px !important;
-  border: 1px solid #d9d9de !important;
-  border-radius: 12px !important;
-  padding: 0 16px !important;
-  display: flex !important;
-  align-items: center !important;
-  background: #fff !important;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.roster-filters .select2-container--default .select2-selection--single:hover {
-  border-color: #b8b8c0 !important;
-}
-.roster-filters
-  .select2-container--default.select2-container--open
-  .select2-selection--single,
-.roster-filters
-  .select2-container--default.select2-container--focus
-  .select2-selection--single {
-  border-color: #c91129 !important;
-  box-shadow: 0 0 0 3px rgba(201, 17, 41, 0.1);
-}
-.roster-filters .select2-selection__rendered {
-  height: 50px !important;
-  line-height: 50px !important;
-  display: block !important;
-  padding-left: 0 !important;
-  padding-right: 26px !important;
-  color: #212128 !important;
-  font-size: 14px !important;
-  font-weight: 600;
-  letter-spacing: 0 !important;
-  text-transform: none !important;
-}
-.roster-filters .select2-selection__arrow {
-  width: 20px !important;
-  height: 50px !important;
-  top: 0 !important;
-  right: 12px !important;
-}
-.roster-filters .select2-selection__arrow b {
-  border: 0 !important;
-  width: 8px !important;
-  height: 8px !important;
-  top: 19px !important;
-  left: 4px !important;
-  margin: 0 !important;
-  transform: rotate(45deg);
-  border-right: 2px solid #9c9ca4 !important;
-  border-bottom: 2px solid #9c9ca4 !important;
-}
-.roster-filters .select2-container--open .select2-selection__arrow b {
-  top: 24px !important;
-  transform: rotate(225deg);
-}
-.select2-dropdown {
-  border: 1px solid #e1e1e5 !important;
-  border-radius: 12px !important;
-  box-shadow: 0 12px 34px rgba(18, 21, 28, 0.12) !important;
-  overflow: hidden;
-  margin-top: 5px;
-}
-.select2-results__option {
-  padding: 12px 16px !important;
-  font-size: 14px;
-}
-.select2-container--default .select2-results__option--selected {
-  background: #fff0f2 !important;
-  color: #c91129 !important;
-  font-weight: 700;
-}
-.select2-container--default
-  .select2-results__option--highlighted.select2-results__option--selectable {
-  background: #c91129 !important;
-  color: #fff !important;
 }
 .roster-table__name {
   font-weight: 800;

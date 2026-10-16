@@ -7,16 +7,6 @@ function initHcRoster() {
     groups = Array.from(root.querySelectorAll("[data-roster-group]")),
     empty = root.querySelector("#roster-empty"),
     note = root.querySelector("#roster-demo-note");
-  if (window.jQuery && window.jQuery.fn && window.jQuery.fn.select2) {
-    window
-      .jQuery(root)
-      .find(".js-roster-select")
-      .select2({
-        minimumResultsForSearch: Infinity,
-        width: "100%",
-        dropdownAutoWidth: false,
-      });
-  }
   function filter() {
     const phrase = search.value.trim().toLocaleLowerCase("cs-CZ");
     let visible = 0;
