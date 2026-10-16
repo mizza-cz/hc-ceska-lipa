@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="cs-CZ">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Tabulka A-týmu - HC Česká Lípa</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="format-detection" content="telephone=no" />
+
+	<!--****** Favicon ******-->
+	<!--****** Fonts ******-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+	<!--****** Styles  ******-->
+	<link rel="preload" href="css/styles.css" as="style" />
+	<link rel="stylesheet" media="screen, handheld" href="css/styles.css" />
+	<link rel="stylesheet" href="css/hc-roster.css" />
+	<link rel="stylesheet" media="print" href="css/prints.css" />
+	<!--****** Styles  ******-->
+
+	<!--****** Scripts  ******-->
+	<link rel="preload" href="https://code.jquery.com/jquery-3.6.0.min.js" as="script" crossorigin />
+	<link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" as="script" crossorigin />
+	<link rel="preload" href="js/scripts.js" as="script" />
+	<!-- ****** scripts ****** -->
+
+<link rel="stylesheet" href="css/hc-standings.css"></head>
+
+<body>
+	<div class="base">
+		<div class="topline">
+			<div class="site-container topline__inner">
+				<span>HC ČESKÁ LÍPA · OFICIÁLNÍ WEB KLUBU</span><span>JEDEN TÝM. JEDNO MĚSTO. SPOLEČNÉ SRDCE.</span>
+			</div>
+		</div>
+		<header class="site-header">
+			<div class="site-container site-header__inner">
+				<a class="brand" href="01.0_homepage.html" aria-label="HC Česká Lípa">
+					<span class="brand__mark" aria-hidden="true">
+						<img src="images/content/logo.webp" alt="" />
+					</span>
+					<span class="brand__name">
+						HC <strong>ČESKÁ LÍPA</strong><small>HOKEJOVÝ KLUB</small>
+					</span> </a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Otevřít menu">
+					<span></span><span></span><span></span>
+				</button>
+				<nav class="main-nav" id="main-navigation" aria-label="Hlavní navigace">
+					<div class="main-nav__item">
+						<button class="main-nav__trigger" type="button" aria-expanded="false">
+							Klub<span aria-hidden="true">⌄</span>
+						</button>
+						<div class="main-nav__dropdown">
+							<a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">O klubu</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Kontakty</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Management klubu</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Dokumenty</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Partneři</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Fotogalerie</a>
+						</div>
+					</div>
+					<div class="main-nav__item">
+						<button class="main-nav__trigger" type="button" aria-expanded="false">
+							A-tým<span aria-hidden="true">⌄</span>
+						</button>
+						<div class="main-nav__dropdown">
+							<a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Týmová fotografie</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Soupiska</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Zápasy</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Tabulka</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Realizační tým</a>
+						</div>
+					</div>
+					<div class="main-nav__item">
+						<button class="main-nav__trigger" type="button" aria-expanded="false">
+							U20<span aria-hidden="true">⌄</span>
+						</button>
+						<div class="main-nav__dropdown">
+							<a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Týmová fotografie</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Soupiska</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Zápasy</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Tabulka</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Realizační tým</a>
+						</div>
+					</div>
+					<div class="main-nav__item">
+						<button class="main-nav__trigger" type="button" aria-expanded="false">
+							U18<span aria-hidden="true">⌄</span>
+						</button>
+						<div class="main-nav__dropdown">
+							<a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Týmová fotografie</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Soupiska</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Zápasy</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Tabulka</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Realizační tým</a>
+						</div>
+					</div>
+					<div class="main-nav__item">
+						<button class="main-nav__trigger" type="button" aria-expanded="false">
+							U16<span aria-hidden="true">⌄</span>
+						</button>
+						<div class="main-nav__dropdown">
+							<a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Týmová fotografie</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Zápasy</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Tabulka</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Soupiska</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Realizační tým</a>
+						</div>
+					</div>
+					<div class="main-nav__item">
+						<button class="main-nav__trigger" type="button" aria-expanded="false">
+							U14<span aria-hidden="true">⌄</span>
+						</button>
+						<div class="main-nav__dropdown">
+							<a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Týmová fotografie</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Soupiska</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Zápasy</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Tabulka</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Realizační tým</a>
+						</div>
+					</div>
+					<div class="main-nav__item">
+						<button class="main-nav__trigger" type="button" aria-expanded="false">
+							U12<span aria-hidden="true">⌄</span>
+						</button>
+						<div class="main-nav__dropdown">
+							<a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Týmová fotografie</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Soupiska</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Zápasy</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Realizační tým</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Tabulka</a>
+						</div>
+					</div>
+					<div class="main-nav__item">
+						<button class="main-nav__trigger" type="button" aria-expanded="false">
+							Přípravka<span aria-hidden="true">⌄</span>
+						</button>
+						<div class="main-nav__dropdown">
+							<a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">U10 / HC4</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">U9 / HC3</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">U8 / HC2</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">U7 / HC1</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Realizační tým</a>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="main" aria-label="Hlavní obsah">
+			<section class="standings-page" aria-labelledby="standings-title"><div class="roster-page__banner"><div class="site-container"><nav class="roster-page__breadcrumbs" aria-label="Drobečková navigace"><a href="01.0_homepage.html">Úvod</a><span>/</span><span>A-tým</span><span>/</span><strong>Tabulka</strong></nav><span class="eyebrow">A-TÝM · SEZÓNA 2026/27</span><h1 id="standings-title">TABULKA <span>A-TÝMU</span></h1></div></div><div class="site-container standings-page__body"><div class="roster-page__tabs" aria-label="Navigace A-tým"><a href="02.0_soupiska.html">Soupiska</a><a href="01.0_homepage.html#zapasy">Zápasy</a><a class="is-active" href="03.0_tabulka.html" aria-current="page">Tabulka</a></div><div class="standings-page__heading"><div><span class="eyebrow">KRAJSKÁ LIGA MUŽŮ · 2026/2027</span><h2>CELKOVÁ TABULKA</h2></div><label class="standings-page__season"><span>Sezóna</span><select id="standings-season" aria-label="Sezóna"><option value="2026/27">2026/2027</option><option value="2025/26">2025/2026</option><option value="2024/25">2024/2025</option></select></label></div><div class="standings-page__scroll"><table class="standings-page__table"><thead><tr><th scope="col"><button type="button" data-sort="pos" title="Pořadí" aria-label="Seřadit podle: Pořadí">P</button></th><th scope="col"><button type="button" data-sort="club" title="Klub" aria-label="Seřadit podle: Klub">Klub</button></th><th scope="col"><button type="button" data-sort="z" title="Zápasy" aria-label="Seřadit podle: Zápasy">Z</button></th><th scope="col"><button type="button" data-sort="v" title="Výhry" aria-label="Seřadit podle: Výhry">V</button></th><th scope="col"><button type="button" data-sort="vp" title="Výhry v prodloužení" aria-label="Seřadit podle: Výhry v prodloužení">Vp</button></th><th scope="col"><button type="button" data-sort="r" title="Remízy" aria-label="Seřadit podle: Remízy">R</button></th><th scope="col"><button type="button" data-sort="pp" title="Prohry v prodloužení" aria-label="Seřadit podle: Prohry v prodloužení">Pp</button></th><th scope="col"><button type="button" data-sort="p" title="Prohry" aria-label="Seřadit podle: Prohry">P</button></th><th scope="col"><button type="button" data-sort="vb" title="Vstřelené branky" aria-label="Seřadit podle: Vstřelené branky">VB</button></th><th scope="col"><button type="button" data-sort="ib" title="Inkasované branky" aria-label="Seřadit podle: Inkasované branky">IB</button></th><th scope="col"><button type="button" data-sort="b" title="Body" aria-label="Seřadit podle: Body">B</button></th><th scope="col"><button type="button" data-sort="rb" title="Rozdíl branek" aria-label="Seřadit podle: Rozdíl branek">RB</button></th></tr></thead><tbody><tr class="is-home"><td>1.</td><td><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">HC Česká Lípa</a></td><td>12</td><td>9</td><td>0</td><td>0</td><td>1</td><td>2</td><td>54</td><td>22</td><td>28</td><td>+32</td></tr>
+<tr ><td>2.</td><td><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">HC Turnov 1931</a></td><td>12</td><td>8</td><td>1</td><td>0</td><td>0</td><td>3</td><td>50</td><td>26</td><td>26</td><td>+24</td></tr>
+<tr ><td>3.</td><td><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">TJ HC Jablonec nad Nisou</a></td><td>12</td><td>7</td><td>2</td><td>0</td><td>1</td><td>2</td><td>46</td><td>30</td><td>26</td><td>+16</td></tr>
+<tr ><td>4.</td><td><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">HC Frýdlant</a></td><td>12</td><td>6</td><td>0</td><td>0</td><td>0</td><td>6</td><td>42</td><td>34</td><td>18</td><td>+8</td></tr>
+<tr ><td>5.</td><td><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">HC TS Varnsdorf</a></td><td>12</td><td>5</td><td>1</td><td>0</td><td>1</td><td>5</td><td>38</td><td>38</td><td>18</td><td>0</td></tr>
+<tr ><td>6.</td><td><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">BK Nová Paka</a></td><td>12</td><td>4</td><td>2</td><td>0</td><td>0</td><td>6</td><td>34</td><td>42</td><td>16</td><td>-8</td></tr>
+<tr ><td>7.</td><td><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">HC Lomnice nad Popelkou</a></td><td>12</td><td>3</td><td>0</td><td>0</td><td>1</td><td>8</td><td>30</td><td>46</td><td>10</td><td>-16</td></tr>
+<tr ><td>8.</td><td><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">HC Česká Kamenice</a></td><td>12</td><td>2</td><td>1</td><td>0</td><td>0</td><td>9</td><td>26</td><td>50</td><td>8</td><td>-24</td></tr>
+<tr ><td>9.</td><td><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">HC Děčín</a></td><td>12</td><td>1</td><td>2</td><td>0</td><td>1</td><td>8</td><td>22</td><td>54</td><td>8</td><td>-32</td></tr>
+<tr ><td>10.</td><td><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">HC Liberec B</a></td><td>12</td><td>0</td><td>0</td><td>0</td><td>0</td><td>12</td><td>18</td><td>58</td><td>0</td><td>-40</td></tr></tbody></table></div><div class="standings-page__foot"><p id="standings-notice">Ukázková data pro návrh stránky. Pořadí, kluby a výsledky nejsou oficiální.</p><div class="standings-page__legend"><span><b>Z</b> zápasy</span><span><b>V</b> výhry</span><span><b>Vp</b> výhry v prodloužení</span><span><b>Pp</b> prohry v prodloužení</span><span><b>VB</b> vstřelené branky</span><span><b>IB</b> inkasované branky</span><span><b>B</b> body</span><span><b>RB</b> rozdíl branek</span></div></div></div></section></main>
+		<footer class="site-footer" id="klub">
+			<div class="site-container site-footer__inner">
+				<div><strong>HC ČESKÁ LÍPA</strong>
+					<p>Jeden tým. Jedno město. Společné srdce.</p>
+				</div>
+				<div><a href="#novinky">Novinky</a><a href="#zapasy">Zápasy</a><a href="#mladez">Mládež</a><a href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener">Oficiální web ↗</a></div><span>© 2026 HC Česká Lípa · Návrh homepage</span>
+			</div>
+		</footer>
+	</div>
+	<script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+	<script defer src="js/scripts.js"></script>
+<script defer src="js/hc-standings.js"></script></body>
+
+</html>
