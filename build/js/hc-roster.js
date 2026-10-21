@@ -29,12 +29,7 @@ function initHcRoster() {
       visible += count;
     });
     empty.hidden = visible > 0;
-    note.textContent =
-      season.value === "2026"
-        ? "Ukázková soupiska pro návrh designu. Jména a statistické údaje jsou ilustrační."
-        : "Archivní sezóna " +
-          season.options[season.selectedIndex].text +
-          " je pouze ukázka filtru. Zobrazená data jsou demonstrační.";
+    
   }
   search.addEventListener("input", filter);
   position.addEventListener("change", filter);
