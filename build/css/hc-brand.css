@@ -9,7 +9,7 @@ h1,h2,h3,h4,h5,h6,.section-heading h2,.hc-hero__copy h1,.manifesto h2,.editorial
 /* The ticket requests tighter homepage bands, without affecting other pages */
 .main > .hc-hero{height:clamp(420px,43vw,590px);min-height:420px}
 .main > .hc-hero .hc-hero__layout{padding-top:58px;padding-bottom:68px}
-.main > .section{padding-top:52px!important;padding-bottom:52px!important}
+.main > .section{padding-top:40px!important;padding-bottom:40px!important}
 .main > .section .section-heading{margin-bottom:24px!important}
 .main > .section .section-heading h2{margin-top:8px!important}
 .main > .section .hc-game-card__head{padding:13px 16px}
@@ -41,3 +41,5 @@ h1,h2,h3,h4,h5,h6,.section-heading h2,.hc-hero__copy h1,.manifesto h2,.editorial
 .main > .manifesto{padding-top:38px!important;padding-bottom:38px!important}
 .main > .manifesto h2{margin:12px 0 19px}
 }
+
+@media(min-width:992px){.main > .hc-hero .hc-hero__copy h1{font-size:4.5rem}}
