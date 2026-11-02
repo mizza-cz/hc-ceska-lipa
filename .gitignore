@@ -48,5 +48,4 @@ Thumbs.db
 
 .gulp-cache/
 
-# Obsolete generated output
-build/
+ 
