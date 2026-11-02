@@ -35,7 +35,7 @@ function templates() {
     .pipe(plumber())
     .pipe(data(() => JSON.parse(fs.readFileSync("src/data.json", "utf8"))))
     .pipe(twig({ namespaces: { components: "src/components", images: "src/images/ico" } }))
-    .pipe(replace(/(["'(])images\//g, "$1/assets/images/"))
+    .pipe(replace(/(["\'(])images\//g, function (match, prefix) { return prefix + "/assets/images/"; }))
     .pipe(htmlbeautify({ max_preserve_newlines: 1, indentSize: 2, indent_with_tabs: true }))
     .pipe(gulp.dest(OUT));
 }
