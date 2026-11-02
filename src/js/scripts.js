@@ -3,5 +3,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 //=include ../components/**/*.js
+//=include legacy/*.js
 //=include custom/*.js
 });
