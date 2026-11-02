@@ -47,3 +47,6 @@ Thumbs.db
 *.wmv
 
 .gulp-cache/
+
+# Obsolete generated output
+build/

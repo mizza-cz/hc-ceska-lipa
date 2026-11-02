@@ -35,7 +35,7 @@ function templates() {
     .pipe(plumber())
     .pipe(data(() => JSON.parse(fs.readFileSync("src/data.json", "utf8"))))
     .pipe(twig({ namespaces: { components: "src/components", images: "src/images/ico" } }))
-    .pipe(replace(/(["'(])images\//g, "$1../assets/images/"))
+    .pipe(replace(/(["'(])images\//g, "$1/assets/images/"))
     .pipe(htmlbeautify({ max_preserve_newlines: 1, indentSize: 2, indent_with_tabs: true }))
     .pipe(gulp.dest(OUT));
 }
@@ -56,7 +56,7 @@ function sassBuild() {
     .pipe(gulp.dest(TMP));
 }
 function css() {
-  return gulp.src([TMP + "/styles.css", "src/css/legacy/*.css"], { allowEmpty: true })
+  return gulp.src([TMP + "/styles.css", "src/css/legacy/hc-home.css", "src/css/legacy/hc-redesign.css", "src/css/legacy/hc-polish.css", "src/css/legacy/hc-fixes.css", "src/css/legacy/hc-tables.css", "src/css/legacy/hc-roster.css", "src/css/legacy/hc-roster-tweaks.css", "src/css/legacy/hc-standings.css", "src/css/legacy/hc-select.css", "src/css/legacy/hc-subpages.css", "src/css/legacy/hc-editorial.css", "src/css/legacy/hc-matches.css", "src/css/legacy/hc-brand.css", "src/css/legacy/hc-partners.css"], { allowEmpty: true })
     .pipe(concat("style.css"))
     .pipe(replace(/\.\.\/fonts\//g, "../../assets/fonts/"))
     .pipe(replace(/\.\.\/images\//g, "../../assets/images/"))
