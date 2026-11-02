@@ -79,7 +79,7 @@ function fonts() {
 function favicon() {
   return gulp.src("src/favicon/**/*", { base: "src/favicon", allowEmpty: true }).pipe(gulp.dest(ASSETS + "/favicon"));
 }
-function clean() { return del([OUT + "/**", ASSETS + "/**", TMP + "/**"]); }
+function clean() { return del([OUT, ASSETS, TMP]); }
 function serve(done) {
   browserSync.init({ server: { baseDir: "." }, startPath: "/dist/index.html", notify: false });
   done();
