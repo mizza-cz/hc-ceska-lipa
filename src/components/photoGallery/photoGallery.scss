@@ -1,0 +1,164 @@
+.photo-gallery {
+  background: #fff;
+  color: #24252b;
+
+  &__content { padding-top: 56px; padding-bottom: 90px; }
+  &__heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 28px;
+
+    h2 {
+      margin: 12px 0 15px;
+      font-size: clamp(30px, 3.8vw, 48px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -.045em;
+      span { color: #c91129; }
+    }
+    p { max-width: 690px; font-size: 14px; line-height: 1.7; color: #74757c; }
+  }
+  &__count {
+    flex: none;
+    margin-bottom: 5px;
+    color: #c91129;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .08em;
+  }
+  &__related {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 20px;
+    padding: 19px 23px;
+    margin-bottom: 33px;
+    border-left: 4px solid #c91129;
+    background: #f6f6f8;
+    border-radius: 0 10px 10px 0;
+    strong { font-size: 11px; letter-spacing: .08em; color: #6b6c74; }
+    a { font-size: 13px; font-weight: 800; text-decoration: none; color: #25262d;
+      &:hover { color: #c91129; }
+      span { color: #c91129; margin-left: 5px; }
+    }
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  &__item {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    aspect-ratio: 4 / 3;
+    border: 0;
+    border-radius: 13px;
+    overflow: hidden;
+    background: #e8e9ed;
+    cursor: pointer;
+    text-align: left;
+    img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+    &:hover img, &:focus-visible img { transform: scale(1.06); }
+  }
+  &__item-number {
+    position: absolute;
+    bottom: 17px;
+    left: 19px;
+    font-size: 12px;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 1px 6px rgba(0,0,0,.6);
+  }
+  &__zoom {
+    position: absolute;
+    right: 15px;
+    bottom: 13px;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #c91129;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  &__note { color: #8b8c92; font-size: 12px; margin-top: 18px; }
+  &__back {
+    display: inline-flex;
+    gap: 10px;
+    margin-top: 30px;
+    font-size: 13px;
+    font-weight: 900;
+    color: #c91129;
+    text-decoration: none;
+  }
+
+  &__lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 88px;
+    background: rgba(6, 7, 12, .96);
+    &[hidden] { display: none; }
+  }
+  &__lightbox-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    img { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 170px); object-fit: contain; }
+    figcaption {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      width: 100%;
+      padding-top: 15px;
+      color: #e2e3e7;
+      font-size: 12px;
+    }
+  }
+  &__lightbox-close, &__lightbox-prev, &__lightbox-next {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    color: #fff;
+    background: rgba(255,255,255,.12);
+    cursor: pointer;
+    &:hover, &:focus-visible { background: #c91129; }
+  }
+  &__lightbox-close { top: 22px; right: 25px; width: 43px; height: 43px; font-size: 29px; }
+  &__lightbox-prev, &__lightbox-next { top: 50%; transform: translateY(-50%); width: 48px; height: 48px; font-size: 40px; line-height: 1; }
+  &__lightbox-prev { left: 24px; }
+  &__lightbox-next { right: 24px; }
+
+  @media (max-width: 991px) { &__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; } }
+  @media (max-width: 650px) {
+    &__content { padding-top: 34px; padding-bottom: 62px; }
+    &__heading { flex-direction: column; align-items: start; gap: 14px; }
+    &__grid { gap: 10px; }
+    &__item { border-radius: 8px; }
+    &__item-number { bottom: 10px; left: 10px; }
+    &__zoom { right: 9px; bottom: 8px; width: 28px; height: 28px; font-size: 21px; }
+    &__lightbox { padding: 65px 10px 85px; }
+    &__lightbox-figure img { max-height: calc(100dvh - 180px); }
+    &__lightbox-prev, &__lightbox-next { top: auto; bottom: 17px; transform: none; width: 44px; height: 44px; }
+    &__lightbox-prev { left: 22px; }
+    &__lightbox-next { right: 22px; }
+    &__lightbox-close { top: 14px; right: 16px; }
+  }
+}
