@@ -1,0 +1,52 @@
+.hc-cover {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+  background: rgba(9, 12, 19, .74);
+  backdrop-filter: blur(4px);
+
+  &.is-visible { display: flex; }
+
+  &__body {
+    width: max-content;
+    max-width: 100%;
+    margin: auto;
+    padding: 12px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 22px 80px rgba(0, 0, 0, .3);
+  }
+
+  &__link { display: block; line-height: 0; }
+
+  &__image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: min(760px, calc(100vw - 56px));
+    max-height: calc(100dvh - 120px);
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  &__close {
+    display: block;
+    width: 100%;
+    min-height: 42px;
+    margin-top: 12px;
+    border: 0;
+    border-radius: 6px;
+    background: #c91129;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+
+    &:hover, &:focus-visible { background: #a40b21; }
+  }
+}
