@@ -1,0 +1,15 @@
+{
+  "name": "HC Česká Lípa",
+  "short_name": "HC Česká Lípa",
+  "icons": [
+    {
+      "src": "/assets/favicon/favicon.webp",
+      "sizes": "200x200",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#c91129",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
