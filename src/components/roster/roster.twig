@@ -16,31 +16,27 @@
       ><a href="04.0_zapasy.html">Zápasy</a
       ><a href="03.0_tabulka.html">Tabulka</a>
     </div>
-    <div class="roster-filters">
-      <label class="roster-filters__field"
-        ><span>Sezóna</span
-        ><select class="js-select2 ui-select" id="roster-season" name="season">
+    <form class="roster-filters" method="get" action="" role="search">
+      <label class="roster-filters__field"><span>Sezóna</span>
+        <select class="js-select2 ui-select" id="roster-season" name="season">
           <option value="2026" selected>2026/2027</option>
           <option value="2025">2025/2026</option>
           <option value="2024">2024/2025</option>
-        </select></label
-      ><label class="roster-filters__field"
-        ><span>Post</span
-        ><select class="js-select2 ui-select" id="roster-position" name="position">
+        </select>
+      </label>
+      <label class="roster-filters__field"><span>Post</span>
+        <select class="js-select2 ui-select" id="roster-position" name="position">
           <option value="all">Všechny posty</option>
           <option value="goalies">Brankáři</option>
           <option value="defenders">Obránci</option>
           <option value="forwards">Útočníci</option>
-        </select></label
-      ><label class="roster-filters__field roster-filters__field--search"
-        ><span>Hledat hráče</span
-        ><input
-          type="search"
-          id="roster-search"
-          placeholder="Jméno nebo číslo"
-          autocomplete="off"
-      /></label>
-    </div>
+        </select>
+      </label>
+      <label class="roster-filters__field roster-filters__field--search"><span>Hledat hráče</span>
+        <input type="search" id="roster-search" name="search" placeholder="Jméno nebo číslo" autocomplete="off" />
+      </label>
+      <button class="roster-filters__submit" type="submit">Filtrovat</button>
+    </form>
     
     <div class="roster-page__groups">
       <section class="roster-group" data-roster-group="goalies">

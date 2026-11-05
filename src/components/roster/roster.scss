@@ -306,3 +306,28 @@
     margin-bottom: 23px;
   }
 }
+
+.roster-filters {
+  grid-template-columns: minmax(150px, 230px) minmax(175px, 270px) minmax(180px, 1fr) 135px;
+}
+
+.roster-filters__submit {
+  height: 52px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 12px;
+  background: #c91129;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  &:hover, &:focus-visible { background: #a20b20; }
+}
+
+@media (max-width: 1050px) {
+  .roster-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .roster-filters { grid-template-columns: 1fr; }
+  .roster-filters__submit { width: 100%; }
+}

@@ -128,11 +128,16 @@
 					<div class="standings-page__heading">
 						<div><span class="eyebrow">KRAJSKÁ LIGA MUŽŮ · 2026/2027</span>
 							<h2>CELKOVÁ TABULKA</h2>
-						</div><label class="standings-page__season"><span>Sezóna</span><select class="js-select2 ui-select" id="standings-season" aria-label="Sezóna">
-								<option value="2026/27">2026/2027</option>
-								<option value="2025/26">2025/2026</option>
-								<option value="2024/25">2024/2025</option>
-							</select></label>
+						</div><form class="standings-page__filter" method="get" action="" role="search">
+  <label class="standings-page__season"><span>Sezóna</span>
+    <select class="js-select2 ui-select" id="standings-season" name="season">
+      <option value="2026/27">2026/2027</option>
+      <option value="2025/26">2025/2026</option>
+      <option value="2024/25">2024/2025</option>
+    </select>
+  </label>
+  <button class="standings-page__submit" type="submit">Filtrovat</button>
+</form>
 					</div>
 					<div class="standings-page__scroll">
 						<table class="standings-page__table">

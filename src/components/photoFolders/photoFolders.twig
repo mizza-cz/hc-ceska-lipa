@@ -5,10 +5,11 @@
     <h1>FOTO<span>SLOŽKY</span></h1>
   </div></div>
   <div class="site-container editorial-body">
-    <form class="archive-filters photo-folders__filters" role="search" data-folder-filters>
-      <label><span>Měsíc</span><select class="js-select2 ui-select" id="folder-month"><option value="all">Všechny měsíce</option><option value="10">Říjen 2026</option><option value="09">Září 2026</option><option value="08">Srpen 2026</option></select></label>
-      <label><span>Kategorie</span><select class="js-select2 ui-select" id="folder-category"><option value="all">Všechny kategorie</option><option value="A-TÝM">A-tým</option><option value="MLÁDEŽ">Mládež</option><option value="KLUB">Klub</option></select></label>
-      <label class="archive-filters__search"><span>Vyhledávání</span><input id="folder-search" type="search" placeholder="Hledat fotosložku..." autocomplete="off"></label>
+    <form class="archive-filters photo-folders__filters" method="get" action="" role="search">
+      <label><span>Měsíc</span><select class="js-select2 ui-select" id="folder-month" name="month"><option value="all">Všechny měsíce</option><option value="10">Říjen 2026</option><option value="09">Září 2026</option><option value="08">Srpen 2026</option></select></label>
+      <label><span>Kategorie</span><select class="js-select2 ui-select" id="folder-category" name="category"><option value="all">Všechny kategorie</option><option value="A-TÝM">A-tým</option><option value="MLÁDEŽ">Mládež</option><option value="KLUB">Klub</option></select></label>
+      <label class="archive-filters__search"><span>Vyhledávání</span><input id="folder-search" name="search" type="search" placeholder="Hledat fotosložku..." autocomplete="off"></label>
+      <button class="photo-folders__submit" type="submit">Filtrovat</button>
     </form>
     <div class="photo-folders__grid">
       <a class="photo-folders__card" href="13.0_fotogalerie.html" data-folder data-category="MLÁDEŽ" data-month="10" data-name="puky pomáhají" aria-label="Otevřít fotosložku: Puky pomáhají">
