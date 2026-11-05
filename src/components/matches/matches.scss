@@ -119,16 +119,18 @@
 }
 
 .match-page--list .match-filters__options label > input + span {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  padding: 17px 14px;
-  border: 1px solid #e0e0e4;
-  border-radius: 50px;
+  padding: 11px 22px;
+  border: 1px solid #dddde1;
+  border-radius: 100px;
   background: #fff;
-  color: #28282c;
+  color: #24242a;
   font-size: 12px;
   font-weight: 800;
-  line-height: 16px;
+  line-height: normal;
 }
 
 .match-page--list .match-filters__options input {
