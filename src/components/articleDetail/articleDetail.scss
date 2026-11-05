@@ -174,13 +174,14 @@
 }
 
 @media (max-width: 650px) {
-  .article-detail__hero img,
-  .article-detail__text img {
-    display: block;
-    width: auto;
+  .article-detail__content img {
     max-width: 100%;
-    height: auto;
+    height: auto !important;
     aspect-ratio: auto;
     object-fit: contain;
+  }
+  .article-detail__hero img {
+    display: block;
+    width: 100%;
   }
 }
