@@ -172,3 +172,15 @@
     &__aside { padding: 20px; }
   }
 }
+
+@media (max-width: 650px) {
+  .article-detail__hero img,
+  .article-detail__text img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+}
