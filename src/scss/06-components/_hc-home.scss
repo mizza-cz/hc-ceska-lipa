@@ -100,12 +100,6 @@ a {
   .news__grid {
     grid-template-columns: 1fr 1fr;
   }
-  .news-card--featured {
-    grid-column: 1/-1;
-  }
-  .news-card--featured .news-card__image {
-    aspect-ratio: 2.1;
-  }
 }
 @media (max-width: 650px) {
   .site-container {
@@ -150,16 +144,13 @@ a {
   .youth__grid {
     grid-template-columns: 1fr;
   }
-  .standings,
-  .news-card--featured {
+  .standings {
     grid-column: auto;
   }
-  .news-card__image,
-  .news-card--featured .news-card__image {
+  .news-card__image {
     aspect-ratio: 1.65;
   }
-  .news-card h3,
-  .news-card--featured h3 {
+  .news-card h3 {
     font-size: 23px;
   }
   .youth-card {
