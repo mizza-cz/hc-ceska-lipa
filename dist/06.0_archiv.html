@@ -124,17 +124,12 @@
 					</div>
 				</div>
 				<div class="site-container editorial-body">
-					<form class="archive-filters" role="search" onsubmit="return false"><label><span>Měsíc</span><select class="js-select2 ui-select" id="archive-month">
-								<option value="all">Všechny měsíce</option>
-								<option value="10">Říjen 2026</option>
-								<option value="09">Září 2026</option>
-								<option value="08">Srpen 2026</option>
-							</select></label><label><span>Kategorie</span><select class="js-select2 ui-select" id="archive-category">
-								<option value="all">Všechny kategorie</option>
-								<option value="A-TÝM">A-tým</option>
-								<option value="MLÁDEŽ">Mládež</option>
-								<option value="KLUB">Klub</option>
-							</select></label><label class="archive-filters__search"><span>Vyhledávání</span><input id="archive-search" type="search" placeholder="Hledat článek..." autocomplete="off"></label></form>
+					<form class="archive-filters" role="search" method="get" action="">
+  <label><span>Měsíc</span><select class="js-select2 ui-select" id="archive-month" name="month"><option value="all">Všechny měsíce</option><option value="10">Říjen 2026</option><option value="09">Září 2026</option><option value="08">Srpen 2026</option></select></label>
+  <label><span>Kategorie</span><select class="js-select2 ui-select" id="archive-category" name="category"><option value="all">Všechny kategorie</option><option value="A-TÝM">A-tým</option><option value="MLÁDEŽ">Mládež</option><option value="KLUB">Klub</option></select></label>
+  <label class="archive-filters__search"><span>Vyhledávání</span><input id="archive-search" name="search" type="search" placeholder="Hledat článek..." autocomplete="off"></label>
+  <button class="archive-filters__submit" type="submit">Filtrovat</button>
+</form>
 					<div class="archive-grid">
 						<article class="archive-card" data-category="A-TÝM" data-search="před domácím zápasem: připravujeme se na další výzvu nový ligový týden přináší další porci hokeje. přinášíme krátký pohled na nejbližší utkání a dění v kabině."><a class="archive-card__media" href="https://www.hcceskalipa.cz/" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1515703407324-5f753afd8be8?auto=format&fit=crop&w=600&q=80" alt="Ilustrační hokejová fotografie"></a>
 							<div class="archive-card__body">

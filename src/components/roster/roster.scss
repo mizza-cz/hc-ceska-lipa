@@ -331,3 +331,8 @@
   .roster-filters { grid-template-columns: 1fr; }
   .roster-filters__submit { width: 100%; }
 }
+
+.roster-page .roster-filters { grid-template-columns: minmax(150px,1fr) minmax(175px,1fr) minmax(200px,1.5fr) 135px; align-items: end; }
+.roster-page .roster-filters__field > span { margin-bottom: 10px; }
+@media (max-width: 1050px) { .roster-page .roster-filters { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 640px) { .roster-page .roster-filters { grid-template-columns: 1fr; } }
