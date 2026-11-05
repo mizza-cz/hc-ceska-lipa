@@ -6,7 +6,7 @@
 .roster-page__tabs{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:12px;margin:0 0 28px}
 .roster-filters{align-items:end}
 .roster-filters__field{display:flex;flex-direction:column;justify-content:flex-end;min-width:0}
-.roster-filters__field>span{margin-bottom:10px}
+.roster-filters__field>span:first-child{margin-bottom:10px}
 .roster-filters__field input,.roster-filters__field select{height:52px!important;min-height:52px;box-sizing:border-box;border-radius:12px!important;font-weight:500;text-transform:none}
 .roster-filters__field input{padding:0 17px!important;line-height:normal}
 .roster-filters .select2-container{display:block!important;height:52px!important;min-height:52px}
