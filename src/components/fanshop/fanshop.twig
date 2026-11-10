@@ -105,6 +105,9 @@
       <strong class="fan-line__total" data-fan-line-total></strong>
     </div>
   </template>
+  <template data-fan-template="summary-line">
+    <div class="fan-summary-line"><span data-fan-summary-name></span><strong data-fan-summary-price></strong></div>
+  </template>
   <template data-fan-template="checkout">
     <div class="fan-steps"><b>01 Košík</b><b class="is-active">02 Objednávka</b><b>03 Shrnutí</b></div>
     <form data-fan-checkout class="fan-checkout" method="post">
@@ -124,16 +127,16 @@
         </div>
         <h3>Doprava</h3>
         <div class="fan-radio">
-          <label><input type="radio" name="shipping" value="pickup" checked><span><strong>Osobní odběr</strong><small>0 Kč (ukázková cena)</small></span></label>
-          <label><input type="radio" name="shipping" value="delivery"><span><strong>Doručení na adresu</strong><small>99 Kč (ukázková cena)</small></span></label>
+          <label><input type="radio" name="shipping" value="pickup" data-price="0" checked><span><strong>Osobní odběr</strong><small>0 Kč (ukázková cena)</small></span></label>
+          <label><input type="radio" name="shipping" value="delivery" data-price="99"><span><strong>Doručení na adresu</strong><small>99 Kč (ukázková cena)</small></span></label>
         </div>
         <h3>Platba</h3>
         <div class="fan-radio">
           <label><input type="radio" name="payment" value="transfer" checked><span><strong>Bankovní převod</strong></span></label>
-          <label><input type="radio" name="payment" value="cash"><span><strong>Platba při převzetí</strong><small>Pouze pro osobní odběr</small></span></label>
+          <label><input type="radio" name="payment" value="cash" data-pickup-only="true"><span><strong>Platba při převzetí</strong><small>Pouze pro osobní odběr</small></span></label>
         </div>
         <label>Poznámka<textarea name="note" rows="3" placeholder="Nepovinné"></textarea></label>
-        <div class="fan-checkout__actions">
+        <p class="fan-demo" data-fan-form-error hidden></p><div class="fan-checkout__actions">
           <button type="button" class="fan-secondary" data-fan-open="cart">← Zpět do košíku</button>
           <button type="submit" class="fan-primary">Zobrazit shrnutí →</button>
         </div>
