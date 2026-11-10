@@ -15,45 +15,369 @@ function _extends(){return(_extends=Object.assign||function(e){for(var t=1;t<arg
            </div>
          `})})}}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",u,{once:!0}):u(),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",f,{once:!0}):f(),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",m,{once:!0}):m();new LazyLoad({elements_selector:"[data-bg]"}),new SmoothScroll(".js-scroll",{speed:300})});
 (function () {
+  "use strict";
+
   const root = document.querySelector("[data-fanshop]");
   if (!root || root.dataset.fanInitialized) return;
   root.dataset.fanInitialized = "true";
-  const products = [
-    {id:"dres",name:"Fanouškovský dres",category:"Dresy",price:890,type:"dres",sizes:["S","M","L","XL","XXL"],description:"Fanouškovský dres v klubových barvách pro zápasy i každodenní fandění."},
-    {id:"mikina",name:"Klubová mikina",category:"Mikiny",price:1090,type:"mikina",sizes:["S","M","L","XL","XXL"],description:"Pohodlná mikina s klubovým motivem."},
-    {id:"tricko",name:"Tričko Jeden tým",category:"Trička",price:449,type:"tricko",sizes:["XS","S","M","L","XL"],description:"Klubové tričko pro opravdové fanoušky."},
-    {id:"sala",name:"Fanouškovská šála",category:"Doplňky",price:299,type:"sala",sizes:[],description:"Šála v barvách HC Česká Lípa."},
-    {id:"cepice",name:"Zimní čepice",category:"Doplňky",price:349,type:"cepice",sizes:[],description:"Klubová čepice do zimních dnů."},
-    {id:"hrnek",name:"Klubový hrnek",category:"Doplňky",price:249,type:"hrnek",sizes:[],description:"Keramický hrnek s klubovým znakem."},
-    {id:"vak",name:"Vak na záda",category:"Doplňky",price:399,type:"vak",sizes:[],description:"Praktický vak pro sport a volný čas."},
-    {id:"polokosile",name:"Klubová polokošile",category:"Trička",price:599,type:"tricko",sizes:["S","M","L","XL","XXL"],description:"Polokošile v klubových barvách."}
-  ];
-  const overlay=root.querySelector("[data-fan-overlay]");
-  const body=root.querySelector("[data-fan-body]");
-  const title=root.querySelector("[data-fan-title]");
-  const dialog=root.querySelector(".fan-dialog");
-  const money=n=>new Intl.NumberFormat("cs-CZ").format(n)+" Kč";
-  const art=type=>'<span class="fan-art fan-art--'+type+'" aria-hidden="true"><span class="fan-art__item"><img src="/assets/images/content/logo.png" alt=""></span></span>';
-  const escape=s=>String(s).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-  let cart=[];
-  try {const v=JSON.parse(sessionStorage.getItem("hc-fanshop-demo-cart")||"[]");if(Array.isArray(v))cart=v.filter(x=>products.some(p=>p.id===x.id)&&Number.isInteger(x.qty)&&x.qty>0&&x.qty<=99).map(x=>({id:x.id,size:String(x.size||""),qty:x.qty}));}catch(e){}
-  let current=null,step="product",shipping=0,lastFocus=null,completed=[];
-  const save=()=>{try{sessionStorage.setItem("hc-fanshop-demo-cart",JSON.stringify(cart));}catch(e){}root.querySelectorAll("[data-fan-count]").forEach(x=>x.textContent=cart.reduce((n,x)=>n+x.qty,0));};
-  const subtotal=()=>cart.reduce((n,x)=>n+(products.find(p=>p.id===x.id)?.price||0)*x.qty,0);
-  const open=(name,html)=>{step=name;title.textContent=name==="product"?"Detail produktu":name==="cart"?"Nákupní košík":name==="checkout"?"Dokončení objednávky":"Shrnutí objednávky";body.innerHTML=html;lastFocus=document.activeElement;overlay.hidden=false;document.body.classList.add("fan-modal-open");dialog.focus();};
-  const replace=(name,html)=>{open(name,html);};
-  const close=()=>{overlay.hidden=true;document.body.classList.remove("fan-modal-open");body.innerHTML="";if(lastFocus&&lastFocus.focus)lastFocus.focus();};
-  const line=(item,index)=>{const p=products.find(x=>x.id===item.id);if(!p)return "";return '<div class="fan-line">'+art(p.type)+'<div class="fan-line__main"><strong>'+escape(p.name)+'</strong><small>'+escape(item.size||"Bez velikosti")+'</small><span>'+money(p.price)+'</span></div><div class="fan-line__controls"><label>Ks <input type="number" min="1" max="99" data-fan-qty="'+index+'" value="'+item.qty+'"></label><button type="button" data-fan-remove="'+index+'">Odebrat</button></div><strong class="fan-line__total">'+money(p.price*item.qty)+'</strong></div>';};
-  function showProduct(id){const p=products.find(x=>x.id===id);if(!p)return;current=p;replace("product",'<div class="fan-detail">'+art(p.type)+'<div class="fan-detail__content"><span class="eyebrow">'+escape(p.category)+'</span><h3>'+escape(p.name)+'</h3><strong class="fan-price">'+money(p.price)+'</strong><p>'+escape(p.description)+'</p><form data-fan-add>'+ (p.sizes.length?'<fieldset class="fan-size"><legend>Velikost</legend>'+p.sizes.map((s,i)=>'<label><input type="radio" name="size" value="'+s+'" '+(i===0?"checked":"")+'><span>'+s+'</span></label>').join("")+'</fieldset>':"")+'<label class="fan-quantity">Množství <input name="qty" type="number" min="1" max="99" value="1" required></label><button class="fan-primary" type="submit">Přidat do košíku →</button></form></div></div>');}
-  function showCart(){shipping=0;replace("cart",cart.length?'<div class="fan-cart-layout"><div><div class="fan-lines">'+cart.map(line).join("")+'</div><button type="button" class="fan-link" data-fan-close>← Pokračovat v nákupu</button></div><aside class="fan-summary-card"><h3>Shrnutí nákupu</h3><div><span>Produkty</span><strong>'+money(subtotal())+'</strong></div><div><span>Doprava</span><span>V dalším kroku</span></div><div class="fan-summary-card__total"><span>Mezisoučet</span><strong>'+money(subtotal())+'</strong></div><button class="fan-primary" type="button" data-fan-open="checkout">Pokračovat k objednávce →</button></aside></div>':'<div class="fan-empty"><span>🛒</span><h3>Váš košík je prázdný</h3><p>Vyberte si produkty z klubové nabídky.</p><button type="button" class="fan-primary" data-fan-close>Prohlédnout produkty</button></div>');}
-  function totalBox(){return '<aside class="fan-summary-card"><h3>Souhrn objednávky</h3>'+cart.map(item=>{const p=products.find(x=>x.id===item.id);return '<div><span>'+escape(p.name)+' × '+item.qty+(item.size?' ('+escape(item.size)+')':'')+'</span><strong>'+money(p.price*item.qty)+'</strong></div>';}).join("")+'<div><span>Doprava</span><strong data-fan-shipping-label>'+money(shipping)+'</strong></div><div class="fan-summary-card__total"><span>Celkem</span><strong data-fan-total>'+money(subtotal()+shipping)+'</strong></div></aside>';}
-  function showCheckout(){if(!cart.length){showCart();return;}replace("checkout",'<div class="fan-steps"><b>01 Košík</b><b class="is-active">02 Objednávka</b><b>03 Shrnutí</b></div><form data-fan-checkout class="fan-checkout"><div class="fan-checkout__fields"><h3>Kontaktní údaje</h3><div class="fan-form-grid"><label>Jméno *<input name="firstName" autocomplete="given-name" required></label><label>Příjmení *<input name="lastName" autocomplete="family-name" required></label><label>E-mail *<input name="email" type="email" autocomplete="email" required></label><label>Telefon *<input name="phone" type="tel" autocomplete="tel" required></label></div><h3>Doručovací adresa</h3><div class="fan-form-grid"><label class="fan-wide">Ulice a číslo popisné *<input name="street" autocomplete="street-address" required></label><label>Město *<input name="city" autocomplete="address-level2" required></label><label>PSČ *<input name="zip" autocomplete="postal-code" pattern="[0-9 ]{5,6}" placeholder="470 01" required></label></div><h3>Doprava</h3><div class="fan-radio"><label><input type="radio" name="shipping" value="pickup" checked><span><strong>Osobní odběr</strong><small>0 Kč · pouze ukázka</small></span></label><label><input type="radio" name="shipping" value="delivery"><span><strong>Doručení na adresu</strong><small>99 Kč · pouze ukázka</small></span></label></div><h3>Platba</h3><div class="fan-radio"><label><input type="radio" name="payment" value="transfer" checked><span><strong>Bankovní převod</strong><small>Ukázková platební metoda</small></span></label><label><input type="radio" name="payment" value="cash"><span><strong>Platba při převzetí</strong><small>Pouze pro osobní odběr</small></span></label></div><label>Poznámka<textarea name="note" rows="3" placeholder="Nepovinné"></textarea></label><label class="fan-consent"><input type="checkbox" name="consent" required><span>Rozumím, že jde o ukázkovou objednávku, která nebude odeslána.</span></label><div class="fan-checkout__actions"><button type="button" class="fan-secondary" data-fan-open="cart">← Zpět do košíku</button><button type="submit" class="fan-primary">Zobrazit shrnutí →</button></div></div>'+totalBox()+'</form>');}
-  function showSummary(form){const data=new FormData(form);const payment=data.get("payment");const ship=data.get("shipping");if(payment==="cash"&&ship!=="pickup"){alert("Platba při převzetí je možná pouze při osobním odběru.");return;}const details={name:String(data.get("firstName"))+" "+String(data.get("lastName")),email:String(data.get("email")),phone:String(data.get("phone")),address:String(data.get("street"))+", "+String(data.get("zip"))+" "+String(data.get("city")),shipping:ship==="pickup"?"Osobní odběr":"Doručení na adresu",payment:payment==="cash"?"Platba při převzetí":"Bankovní převod"};completed=cart.map(x=>({...x}));replace("summary",'<div class="fan-steps"><b>01 Košík</b><b>02 Objednávka</b><b class="is-active">03 Shrnutí</b></div><div class="fan-finished"><span class="fan-finished__icon">✓</span><h3>Ukázková objednávka je připravena</h3><p>Tato šablona neodesílá žádné údaje a nevytváří skutečné objednávky.</p><div class="fan-finished__details"><div><strong>Zákazník</strong><span>'+escape(details.name)+'</span><span>'+escape(details.email)+'</span><span>'+escape(details.phone)+'</span></div><div><strong>Doručení</strong><span>'+escape(details.shipping)+'</span><span>'+escape(details.address)+'</span><span>'+escape(details.payment)+'</span></div></div><div class="fan-summary-card"><h3>Objednané produkty</h3>'+completed.map(x=>{const p=products.find(y=>y.id===x.id);return '<div><span>'+escape(p.name)+' '+escape(x.size||'')+' × '+x.qty+'</span><strong>'+money(p.price*x.qty)+'</strong></div>';}).join("")+'<div class="fan-summary-card__total"><span>Celkem</span><strong>'+money(subtotal()+shipping)+'</strong></div></div><button type="button" class="fan-primary" data-fan-finish>Dokončit ukázku</button></div>');}
-  root.addEventListener("click",e=>{const product=e.target.closest("[data-fan-product]");if(product){showProduct(product.dataset.fanProduct);return;}const filter=e.target.closest("[data-fan-filter]");if(filter){root.querySelectorAll("[data-fan-filter]").forEach(x=>x.classList.toggle("is-active",x===filter));applyFilters();return;}const closeButton=e.target.closest("[data-fan-close]");if(closeButton){close();return;}const openButton=e.target.closest("[data-fan-open]");if(openButton){if(openButton.dataset.fanOpen==="cart")showCart();else if(openButton.dataset.fanOpen==="checkout")showCheckout();return;}const remove=e.target.closest("[data-fan-remove]");if(remove){cart.splice(Number(remove.dataset.fanRemove),1);save();showCart();return;}if(e.target.closest("[data-fan-finish]")){cart=[];save();close();}});
-  root.addEventListener("change",e=>{if(e.target.matches("[data-fan-qty]")){const i=Number(e.target.dataset.fanQty);cart[i].qty=Math.max(1,Math.min(99,Number(e.target.value)||1));save();showCart();}if(e.target.name==="shipping"){shipping=e.target.value==="delivery"?99:0;const label=body.querySelector("[data-fan-shipping-label]"),total=body.querySelector("[data-fan-total]");if(label)label.textContent=money(shipping);if(total)total.textContent=money(subtotal()+shipping);}});
-  root.addEventListener("submit",e=>{if(e.target.matches("[data-fan-add]")){e.preventDefault();if(!e.target.reportValidity())return;const data=new FormData(e.target),qty=Math.min(99,Math.max(1,Number(data.get("qty"))||1)),size=String(data.get("size")||"");const item=cart.find(x=>x.id===current.id&&x.size===size);if(item)item.qty=Math.min(99,item.qty+qty);else cart.push({id:current.id,size,qty});save();showCart();}else if(e.target.matches("[data-fan-checkout]")){e.preventDefault();if(!e.target.reportValidity())return;showSummary(e.target);}});
-  const applyFilters=()=>{const active=root.querySelector("[data-fan-filter].is-active")?.dataset.fanFilter||"Vše";const query=(root.querySelector("[data-fan-search]")?.value||"").toLocaleLowerCase("cs-CZ").trim();let visible=0;root.querySelectorAll(".fan-product").forEach(x=>{const show=(active==="Vše"||x.dataset.category===active)&&x.dataset.name.includes(query);x.hidden=!show;if(show)visible++;});root.querySelector("[data-fan-noresults]").hidden=visible!==0;};
-  root.querySelector("[data-fan-search]").addEventListener("input",applyFilters);
-  document.addEventListener("keydown",e=>{if(overlay.hidden)return;if(e.key==="Escape"){close();return;}if(e.key==="Tab"){const focusables=[...dialog.querySelectorAll('button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),a[href]')].filter(x=>x.offsetParent!==null);if(!focusables.length)return;const first=focusables[0],last=focusables[focusables.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
-  save();
+
+  const overlay = root.querySelector("[data-fan-overlay]");
+  const modalBody = root.querySelector("[data-fan-body]");
+  const modalTitle = root.querySelector("[data-fan-title]");
+  const dialog = root.querySelector(".fan-dialog");
+  const search = root.querySelector("[data-fan-search]");
+  const orderUrl = root.dataset.orderUrl || "";
+  const currency = new Intl.NumberFormat("cs-CZ", {
+    style: "currency", currency: "CZK", maximumFractionDigits: 0
+  });
+
+  // Product details, variants, prices, and images originate from the server-rendered Twig DOM.
+  // The browser never defines or owns the product catalog.
+  const catalog = new Map(
+    [...root.querySelectorAll("[data-fan-item]")].map((element) => [
+      element.dataset.productId, element
+    ])
+  );
+
+  const key = "hc-fanshop-cart-v2";
+  let cart = [];
+  let returnFocus = null;
+  let customer = null;
+  let checkoutValues = null;
+  let shippingPrice = 0;
+
+  const money = (value) => currency.format(value);
+  const priceOf = (id) => Number(catalog.get(id)?.dataset.price || 0);
+  const variantOf = (id, variantId) => {
+    const template = [...root.querySelectorAll("[data-fan-detail-template]")]
+      .find((item) => item.dataset.fanDetailTemplate === id);
+    if (!template) return null;
+    const control = [...template.content.querySelectorAll("[name=variantId]")]
+      .find((item) => item.value === variantId);
+    if (!control) return null;
+    const label = control.closest("label");
+    return label ? label.textContent.trim() : "";
+  };
+
+  const validItem = (item) =>
+    item && catalog.has(String(item.id)) &&
+    typeof item.variantId === "string" &&
+    variantOf(String(item.id), item.variantId) !== null &&
+    Number.isInteger(item.qty) && item.qty >= 1 && item.qty <= 99;
+
+  try {
+    const stored = JSON.parse(sessionStorage.getItem(key) || "[]");
+    if (Array.isArray(stored)) cart = stored.filter(validItem);
+  } catch (_error) {
+    cart = [];
+  }
+
+  function storeCart() {
+    try {
+      sessionStorage.setItem(key, JSON.stringify(cart));
+    } catch (_error) {
+      // The demo still works when browser storage is disabled.
+    }
+    const count = cart.reduce((sum, item) => sum + item.qty, 0);
+    root.querySelectorAll("[data-fan-count]").forEach((element) => {
+      element.textContent = String(count);
+    });
+  }
+
+  const subtotal = () => cart.reduce(
+    (sum, item) => sum + priceOf(item.id) * item.qty, 0
+  );
+
+  function templateContent(name) {
+    const template = root.querySelector('[data-fan-template="' + name + '"]');
+    return template ? template.content.cloneNode(true) : document.createDocumentFragment();
+  }
+
+  function show(name, fragment) {
+    const labels = {
+      product: "Detail produktu",
+      cart: "Nákupní košík",
+      checkout: "Dokončení objednávky",
+      summary: "Shrnutí objednávky"
+    };
+    if (overlay.hidden) returnFocus = document.activeElement;
+    modalTitle.textContent = labels[name] || "Fanshop";
+    modalBody.replaceChildren(fragment);
+    overlay.hidden = false;
+    document.body.classList.add("fan-modal-open");
+    dialog.focus();
+  }
+
+  function close() {
+    overlay.hidden = true;
+    document.body.classList.remove("fan-modal-open");
+    modalBody.replaceChildren();
+    if (returnFocus && returnFocus.isConnected) returnFocus.focus();
+  }
+
+  function showProduct(id) {
+    const template = [...root.querySelectorAll("[data-fan-detail-template]")]
+      .find((element) => element.dataset.fanDetailTemplate === id);
+    if (template) show("product", template.content.cloneNode(true));
+  }
+
+  function fillText(container, selector, value) {
+    container.querySelectorAll(selector).forEach((element) => {
+      element.textContent = String(value);
+    });
+  }
+
+  function lineFor(item, index) {
+    const card = catalog.get(item.id);
+    const fragment = templateContent("cart-line");
+    const row = fragment.querySelector(".fan-line");
+    const sourceImage = card.querySelector(".fan-product__image").firstElementChild;
+    if (sourceImage) row.querySelector("[data-fan-line-image]").append(sourceImage.cloneNode(true));
+    fillText(row, "[data-fan-line-name]", card.querySelector("h2").textContent.trim());
+    fillText(row, "[data-fan-line-variant]", variantOf(item.id, item.variantId) || "Standard");
+    fillText(row, "[data-fan-line-price]", money(priceOf(item.id)));
+    fillText(row, "[data-fan-line-total]", money(priceOf(item.id) * item.qty));
+    const qty = row.querySelector("[data-fan-qty]");
+    qty.dataset.fanQty = String(index);
+    qty.value = String(item.qty);
+    row.querySelector("[data-fan-remove]").dataset.fanRemove = String(index);
+    return row;
+  }
+
+  function showCart() {
+    const fragment = templateContent(cart.length ? "cart" : "cart-empty");
+    if (cart.length) {
+      const lines = fragment.querySelector("[data-fan-lines]");
+      cart.forEach((item, index) => lines.append(lineFor(item, index)));
+      fillText(fragment, "[data-fan-subtotal]", money(subtotal()));
+    }
+    show("cart", fragment);
+  }
+
+  function shippingCost(form) {
+    const selected = form.querySelector('input[name="shipping"]:checked');
+    return selected ? Number(selected.dataset.price || 0) : 0;
+  }
+
+  function populateSummaryLines(container) {
+    container.querySelectorAll("[data-fan-summary-lines]").forEach((list) => {
+      list.replaceChildren();
+      cart.forEach((item) => {
+        const card = catalog.get(item.id);
+        const fragment = templateContent("summary-line");
+        const row = fragment.querySelector(".fan-summary-line");
+        fillText(row, "[data-fan-summary-name]",
+          card.querySelector("h2").textContent.trim() +
+          " · " + (variantOf(item.id, item.variantId) || "Standard") + " × " + item.qty);
+        fillText(row, "[data-fan-summary-price]", money(priceOf(item.id) * item.qty));
+        list.append(row);
+      });
+    });
+  }
+
+  function updateTotals(container) {
+    fillText(container, "[data-fan-shipping]", money(shippingPrice));
+    fillText(container, "[data-fan-total]", money(subtotal() + shippingPrice));
+    populateSummaryLines(container);
+  }
+
+  function showCheckout() {
+    if (!cart.length) {
+      showCart();
+      return;
+    }
+    const fragment = templateContent("checkout");
+    const form = fragment.querySelector("[data-fan-checkout]");
+    if (checkoutValues) {
+      for (const [name, value] of Object.entries(checkoutValues)) {
+        const input = [...form.elements].find((element) => element.name === name && (
+          element.type !== "radio" || element.value === value
+        ));
+        if (input) {
+          if (input.type === "radio") input.checked = true;
+          else input.value = value;
+        }
+      }
+    }
+    shippingPrice = shippingCost(form);
+    updateTotals(fragment);
+    show("checkout", fragment);
+  }
+
+  function showSummary(form) {
+    if (!form.reportValidity()) return;
+    const selectedPayment = form.querySelector('input[name="payment"]:checked');
+    const selectedShipping = form.querySelector('input[name="shipping"]:checked');
+    if (selectedPayment?.dataset.pickupOnly === "true" &&
+        selectedShipping?.value !== "pickup") {
+      const error = form.querySelector("[data-fan-form-error]");
+      if (error) {
+        error.textContent = "Tento způsob platby je dostupný pouze při osobním odběru.";
+        error.hidden = false;
+      }
+      return;
+    }
+    const data = new FormData(form);
+    customer = Object.fromEntries(data.entries());
+    checkoutValues = customer;
+    shippingPrice = shippingCost(form);
+    const fragment = templateContent("summary");
+    fillText(fragment, "[data-fan-customer]", customer.firstName + " " + customer.lastName);
+    fillText(fragment, "[data-fan-email]", customer.email);
+    fillText(fragment, "[data-fan-phone]", customer.phone);
+    fillText(fragment, "[data-fan-address]", customer.street + ", " + customer.zip + " " + customer.city);
+    fillText(fragment, "[data-fan-shipping-name]",
+      selectedShipping?.closest("label")?.querySelector("strong")?.textContent || "");
+    fillText(fragment, "[data-fan-payment-name]",
+      selectedPayment?.closest("label")?.querySelector("strong")?.textContent || "");
+    fillText(fragment, "[data-fan-summary-message]", orderUrl
+      ? "Zkontrolujte údaje a odešlete objednávku."
+      : "Ukázková objednávka. Bez nastaveného backendu se nic neodešle.");
+    updateTotals(fragment);
+    show("summary", fragment);
+  }
+
+  function submitOrder() {
+    // Explicit integration point: real server must validate product/variant IDs,
+    // quantity, inventory, pricing, shipping, CSRF, and customer data.
+    // No browser-calculated prices are submitted as authoritative amounts.
+    if (!orderUrl || !customer || !cart.length) return;
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = orderUrl;
+    form.hidden = true;
+    for (const [name, value] of Object.entries(customer)) {
+      const field = document.createElement("input");
+      field.type = "hidden";
+      field.name = name;
+      field.value = value;
+      form.append(field);
+    }
+    const items = document.createElement("input");
+    items.type = "hidden";
+    items.name = "items";
+    items.value = JSON.stringify(cart.map(({ id, variantId, qty }) => ({
+      productId: id, variantId, quantity: qty
+    })));
+    form.append(items);
+    if (root.dataset.csrf) {
+      const csrf = document.createElement("input");
+      csrf.type = "hidden";
+      csrf.name = "_token";
+      csrf.value = root.dataset.csrf;
+      form.append(csrf);
+    }
+    document.body.append(form);
+    form.submit();
+  }
+
+  function applyFilters() {
+    const category = root.querySelector("[data-fan-filter].is-active")?.dataset.fanFilter || "";
+    const query = search.value.toLocaleLowerCase("cs-CZ").trim();
+    let visible = 0;
+    catalog.forEach((card) => {
+      const title = card.querySelector("h2").textContent.toLocaleLowerCase("cs-CZ");
+      const match = (!category || card.dataset.category === category) && title.includes(query);
+      card.hidden = !match;
+      if (match) visible++;
+    });
+    root.querySelector("[data-fan-noresults]").hidden = visible !== 0;
+  }
+
+  root.addEventListener("click", (event) => {
+    const productButton = event.target.closest("[data-fan-product]");
+    if (productButton) {
+      showProduct(productButton.dataset.fanProduct);
+      return;
+    }
+    const filter = event.target.closest("[data-fan-filter]");
+    if (filter) {
+      root.querySelectorAll("[data-fan-filter]").forEach((button) =>
+        button.classList.toggle("is-active", button === filter)
+      );
+      applyFilters();
+      return;
+    }
+    if (event.target.closest("[data-fan-close]")) {
+      close();
+      return;
+    }
+    const openButton = event.target.closest("[data-fan-open]");
+    if (openButton) {
+      if (openButton.dataset.fanOpen === "cart") showCart();
+      if (openButton.dataset.fanOpen === "checkout") showCheckout();
+      return;
+    }
+    const remove = event.target.closest("[data-fan-remove]");
+    if (remove) {
+      cart.splice(Number(remove.dataset.fanRemove), 1);
+      storeCart();
+      showCart();
+      return;
+    }
+    if (event.target.closest("[data-fan-submit-order]")) submitOrder();
+  });
+
+  root.addEventListener("change", (event) => {
+    if (event.target.matches("[data-fan-qty]")) {
+      const index = Number(event.target.dataset.fanQty);
+      if (!cart[index]) return;
+      cart[index].qty = Math.max(1, Math.min(99, Number(event.target.value) || 1));
+      storeCart();
+      showCart();
+      return;
+    }
+    if (event.target.name === "shipping") {
+      const form = event.target.closest("[data-fan-checkout]");
+      shippingPrice = shippingCost(form);
+      updateTotals(form);
+    }
+  });
+
+  root.addEventListener("submit", (event) => {
+    if (event.target.matches("[data-fan-add]")) {
+      event.preventDefault();
+      const form = event.target;
+      if (!form.reportValidity()) return;
+      const id = form.dataset.productId;
+      if (!catalog.has(id)) return;
+      const data = new FormData(form);
+      const variantId = String(data.get("variantId") || "");
+      if (variantOf(id, variantId) === null) return;
+      const qty = Math.max(1, Math.min(99, Number(data.get("qty")) || 1));
+      const existing = cart.find((item) => item.id === id && item.variantId === variantId);
+      if (existing) existing.qty = Math.min(99, existing.qty + qty);
+      else cart.push({ id, variantId, qty });
+      storeCart();
+      showCart();
+    } else if (event.target.matches("[data-fan-checkout]")) {
+      event.preventDefault();
+      showSummary(event.target);
+    }
+  });
+
+  search?.addEventListener("input", applyFilters);
+  document.addEventListener("keydown", (event) => {
+    if (overlay.hidden) return;
+    if (event.key === "Escape") {
+      close();
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const focusable = [...dialog.querySelectorAll(
+      "a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled])"
+    )].filter((element) => element.getClientRects().length);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  storeCart();
 })();

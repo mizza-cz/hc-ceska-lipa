@@ -3,3 +3,14 @@
 @media(max-width:1150px){.fan-products{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:800px){.fan-products{grid-template-columns:repeat(2,minmax(0,1fr))}.fan-tools{align-items:stretch;flex-direction:column}.fan-search input{width:100%}.fan-cart-layout,.fan-checkout{grid-template-columns:1fr}.fan-dialog{max-height:94vh}.fan-dialog__body{padding:22px}}
 @media(max-width:600px){.fan-content{padding:30px 0 50px}.fan-banner{padding:25px 0 30px}.fan-breadcrumbs{margin-bottom:24px}.fan-head{align-items:flex-start;flex-direction:column}.fan-head h2{font-size:31px}.fan-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.fan-filters button{padding:10px}.fan-products{gap:12px}.fan-product__content{padding:13px;gap:6px}.fan-product h2{font-size:15px}.fan-product__foot{align-items:flex-start;flex-direction:column;gap:8px}.fan-product__foot strong{font-size:16px}.fan-overlay{padding:0;align-items:stretch}.fan-dialog{width:100%;max-height:100dvh;border-radius:0}.fan-dialog__header{padding:18px}.fan-dialog__body{padding:18px}.fan-detail{grid-template-columns:1fr;gap:16px}.fan-detail>.fan-art{max-height:260px}.fan-detail__content{padding:0}.fan-detail__content h3{font-size:24px}.fan-line{grid-template-columns:70px minmax(0,1fr) auto;gap:9px}.fan-line>.fan-art{width:70px}.fan-line__controls input{width:58px}.fan-form-grid{grid-template-columns:1fr}.fan-finished__details{grid-template-columns:1fr}.fan-steps b{font-size:9px}.fan-primary,.fan-secondary{padding:13px 15px}}
+
+/* Server-rendered fanshop imagery and checkout summary. */
+.fan-product__photo{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.fan-detail__photo{display:block;width:100%;height:auto;max-height:480px;object-fit:contain;background:#f1f1f4;border-radius:12px}
+.fan-line>[data-fan-line-image]{width:86px;min-width:0}
+.fan-line>[data-fan-line-image] .fan-art,
+.fan-line>[data-fan-line-image] .fan-product__photo{width:86px;aspect-ratio:1;border-radius:9px}
+.fan-summary-line{display:flex;justify-content:space-between;gap:15px;align-items:start;padding:10px 0;border-bottom:1px solid #e5e5e8;font-size:12px;text-align:left}
+.fan-summary-line strong{white-space:nowrap}
+.fan-dialog [data-fan-form-error]{color:#c91129;font-weight:700}
+@media(max-width:600px){.fan-line>[data-fan-line-image],.fan-line>[data-fan-line-image] .fan-art,.fan-line>[data-fan-line-image] .fan-product__photo{width:70px}.fan-detail__photo{max-height:260px}}
