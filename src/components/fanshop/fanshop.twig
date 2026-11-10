@@ -127,13 +127,15 @@
         </div>
         <h3>Doprava</h3>
         <div class="fan-radio">
-          <label><input type="radio" name="shipping" value="pickup" data-price="0" checked><span><strong>Osobní odběr</strong><small>0 Kč (ukázková cena)</small></span></label>
-          <label><input type="radio" name="shipping" value="delivery" data-price="99"><span><strong>Doručení na adresu</strong><small>99 Kč (ukázková cena)</small></span></label>
+          {% for option in fanshop.shippingOptions %}
+            <label><input type="radio" name="shipping" value="{{ option.id|escape('html_attr') }}" data-price="{{ option.price }}" data-is-pickup="{% if option.isPickup %}true{% else %}false{% endif %}" {% if loop.first %}checked{% endif %}><span><strong>{{ option.name|escape }}</strong><small>{{ option.price|number_format(0, ',', ' ') }} Kč</small></span></label>
+          {% endfor %}
         </div>
         <h3>Platba</h3>
         <div class="fan-radio">
-          <label><input type="radio" name="payment" value="transfer" checked><span><strong>Bankovní převod</strong></span></label>
-          <label><input type="radio" name="payment" value="cash" data-pickup-only="true"><span><strong>Platba při převzetí</strong><small>Pouze pro osobní odběr</small></span></label>
+          {% for option in fanshop.paymentOptions %}
+            <label><input type="radio" name="payment" value="{{ option.id|escape('html_attr') }}" data-pickup-only="{% if option.pickupOnly %}true{% else %}false{% endif %}" {% if loop.first %}checked{% endif %}><span><strong>{{ option.name|escape }}</strong>{% if option.description %}<small>{{ option.description|escape }}</small>{% endif %}</span></label>
+          {% endfor %}
         </div>
         <label>Poznámka<textarea name="note" rows="3" placeholder="Nepovinné"></textarea></label>
         <p class="fan-demo" data-fan-form-error hidden></p><div class="fan-checkout__actions">
