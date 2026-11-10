@@ -558,13 +558,19 @@
         </div>
         <h3>Doprava</h3>
         <div class="fan-radio">
-          <label><input type="radio" name="shipping" value="pickup" data-price="0" checked><span><strong>Osobní odběr</strong><small>0 Kč (ukázková cena)</small></span></label>
-          <label><input type="radio" name="shipping" value="delivery" data-price="99"><span><strong>Doručení na adresu</strong><small>99 Kč (ukázková cena)</small></span></label>
+          
+            <label><input type="radio" name="shipping" value="pickup" data-price="0" data-is-pickup="true" checked><span><strong>Osobní odběr</strong><small>0 Kč</small></span></label>
+          
+            <label><input type="radio" name="shipping" value="delivery" data-price="99" data-is-pickup="false" ><span><strong>Doručení na adresu</strong><small>99 Kč</small></span></label>
+          
         </div>
         <h3>Platba</h3>
         <div class="fan-radio">
-          <label><input type="radio" name="payment" value="transfer" checked><span><strong>Bankovní převod</strong></span></label>
-          <label><input type="radio" name="payment" value="cash" data-pickup-only="true"><span><strong>Platba při převzetí</strong><small>Pouze pro osobní odběr</small></span></label>
+          
+            <label><input type="radio" name="payment" value="transfer" data-pickup-only="false" checked><span><strong>Bankovní převod</strong></span></label>
+          
+            <label><input type="radio" name="payment" value="cash" data-pickup-only="true" ><span><strong>Platba při převzetí</strong><small>Pouze pro osobní odběr</small></span></label>
+          
         </div>
         <label>Poznámka<textarea name="note" rows="3" placeholder="Nepovinné"></textarea></label>
         <p class="fan-demo" data-fan-form-error hidden></p><div class="fan-checkout__actions">
