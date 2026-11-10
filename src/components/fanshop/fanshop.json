@@ -214,6 +214,33 @@
           }
         ]
       }
+    ],
+    "shippingOptions": [
+      {
+        "id": "pickup",
+        "name": "Osobní odběr",
+        "price": 0,
+        "isPickup": true
+      },
+      {
+        "id": "delivery",
+        "name": "Doručení na adresu",
+        "price": 99,
+        "isPickup": false
+      }
+    ],
+    "paymentOptions": [
+      {
+        "id": "transfer",
+        "name": "Bankovní převod",
+        "pickupOnly": false
+      },
+      {
+        "id": "cash",
+        "name": "Platba při převzetí",
+        "description": "Pouze pro osobní odběr",
+        "pickupOnly": true
+      }
     ]
   }
 }
