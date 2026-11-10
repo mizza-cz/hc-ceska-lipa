@@ -193,7 +193,7 @@
     const selectedPayment = form.querySelector('input[name="payment"]:checked');
     const selectedShipping = form.querySelector('input[name="shipping"]:checked');
     if (selectedPayment?.dataset.pickupOnly === "true" &&
-        selectedShipping?.value !== "pickup") {
+        selectedShipping?.dataset.isPickup !== "true") {
       const error = form.querySelector("[data-fan-form-error]");
       if (error) {
         error.textContent = "Tento způsob platby je dostupný pouze při osobním odběru.";
