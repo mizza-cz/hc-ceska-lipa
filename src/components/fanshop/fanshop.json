@@ -1,0 +1,219 @@
+{
+  "fanshop": {
+    "isDemo": true,
+    "orderAction": "",
+    "csrfToken": "",
+    "categories": [
+      {
+        "id": "dresy",
+        "name": "Dresy"
+      },
+      {
+        "id": "mikiny",
+        "name": "Mikiny"
+      },
+      {
+        "id": "tricka",
+        "name": "Trička"
+      },
+      {
+        "id": "doplnky",
+        "name": "Doplňky"
+      }
+    ],
+    "products": [
+      {
+        "id": "dres",
+        "name": "Fanouškovský dres",
+        "categoryId": "dresy",
+        "category": "Dresy",
+        "price": 890,
+        "type": "dres",
+        "description": "Fanouškovský dres v klubových barvách pro zápasy i každodenní fandění.",
+        "image": "",
+        "variants": [
+          {
+            "id": "dres-s",
+            "name": "S"
+          },
+          {
+            "id": "dres-m",
+            "name": "M"
+          },
+          {
+            "id": "dres-l",
+            "name": "L"
+          },
+          {
+            "id": "dres-xl",
+            "name": "XL"
+          },
+          {
+            "id": "dres-xxl",
+            "name": "XXL"
+          }
+        ]
+      },
+      {
+        "id": "mikina",
+        "name": "Klubová mikina",
+        "categoryId": "mikiny",
+        "category": "Mikiny",
+        "price": 1090,
+        "type": "mikina",
+        "description": "Pohodlná mikina s klubovým motivem.",
+        "image": "",
+        "variants": [
+          {
+            "id": "mikina-s",
+            "name": "S"
+          },
+          {
+            "id": "mikina-m",
+            "name": "M"
+          },
+          {
+            "id": "mikina-l",
+            "name": "L"
+          },
+          {
+            "id": "mikina-xl",
+            "name": "XL"
+          },
+          {
+            "id": "mikina-xxl",
+            "name": "XXL"
+          }
+        ]
+      },
+      {
+        "id": "tricko",
+        "name": "Tričko Jeden tým",
+        "categoryId": "tricka",
+        "category": "Trička",
+        "price": 449,
+        "type": "tricko",
+        "description": "Klubové tričko pro fanoušky.",
+        "image": "",
+        "variants": [
+          {
+            "id": "tricko-xs",
+            "name": "XS"
+          },
+          {
+            "id": "tricko-s",
+            "name": "S"
+          },
+          {
+            "id": "tricko-m",
+            "name": "M"
+          },
+          {
+            "id": "tricko-l",
+            "name": "L"
+          },
+          {
+            "id": "tricko-xl",
+            "name": "XL"
+          }
+        ]
+      },
+      {
+        "id": "sala",
+        "name": "Fanouškovská šála",
+        "categoryId": "doplnky",
+        "category": "Doplňky",
+        "price": 299,
+        "type": "sala",
+        "description": "Šála v barvách HC Česká Lípa.",
+        "image": "",
+        "variants": [
+          {
+            "id": "sala-standard",
+            "name": "Standard"
+          }
+        ]
+      },
+      {
+        "id": "cepice",
+        "name": "Zimní čepice",
+        "categoryId": "doplnky",
+        "category": "Doplňky",
+        "price": 349,
+        "type": "cepice",
+        "description": "Klubová čepice do zimních dnů.",
+        "image": "",
+        "variants": [
+          {
+            "id": "cepice-standard",
+            "name": "Standard"
+          }
+        ]
+      },
+      {
+        "id": "hrnek",
+        "name": "Klubový hrnek",
+        "categoryId": "doplnky",
+        "category": "Doplňky",
+        "price": 249,
+        "type": "hrnek",
+        "description": "Keramický hrnek s klubovým znakem.",
+        "image": "",
+        "variants": [
+          {
+            "id": "hrnek-standard",
+            "name": "Standard"
+          }
+        ]
+      },
+      {
+        "id": "vak",
+        "name": "Vak na záda",
+        "categoryId": "doplnky",
+        "category": "Doplňky",
+        "price": 399,
+        "type": "vak",
+        "description": "Praktický vak pro sport a volný čas.",
+        "image": "",
+        "variants": [
+          {
+            "id": "vak-standard",
+            "name": "Standard"
+          }
+        ]
+      },
+      {
+        "id": "polokosile",
+        "name": "Klubová polokošile",
+        "categoryId": "tricka",
+        "category": "Trička",
+        "price": 599,
+        "type": "tricko",
+        "description": "Polokošile v klubových barvách.",
+        "image": "",
+        "variants": [
+          {
+            "id": "polokosile-s",
+            "name": "S"
+          },
+          {
+            "id": "polokosile-m",
+            "name": "M"
+          },
+          {
+            "id": "polokosile-l",
+            "name": "L"
+          },
+          {
+            "id": "polokosile-xl",
+            "name": "XL"
+          },
+          {
+            "id": "polokosile-xxl",
+            "name": "XXL"
+          }
+        ]
+      }
+    ]
+  }
+}
