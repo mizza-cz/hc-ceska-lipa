@@ -1,6 +1,28 @@
 {% extends "@components/base/base.twig" %} {% set title = "HC Česká Lípa | Úvod"
 %} {% block main %} {% include "@components/hero/hero.twig" %} {% include
 "@components/schedule/schedule.twig" %} {% include "@components/news/news.twig"
-%} {% include "@components/youth/youth.twig" %} {% include
+%}
+<section class="hp-banner">
+  <div class="site-container">
+    <a
+      class="hp-banner__link"
+      href="https://www.czechicehockey.tv/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Czechicehockey.tv - sledujte hokej online"
+    >
+      <img
+        class="hp-banner__image"
+        src="images/content/banner.jpeg"
+        width="1200"
+        height="300"
+        alt="Czechicehockey.tv - sledujte hokej kdykoliv a kdekoliv"
+        loading="lazy"
+      />
+    </a>
+  </div>
+</section>
+
+{% include "@components/youth/youth.twig" %} {% include
 "@components/manifesto/manifesto.twig" %} {% include
 "@components/partners/partners.twig" %} {% endblock %}

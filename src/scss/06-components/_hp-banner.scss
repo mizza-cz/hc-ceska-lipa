@@ -1,0 +1,14 @@
+.hp-banner {
+  &__link {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
